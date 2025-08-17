@@ -3,14 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título del sitio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/logoh1.png" type="image/png">
+    <title>miPCera.com - Tu tienda de informática en San Lorenzo</title>
+    <style>
+        /* Definición de la fuente y reseteo de márgenes */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Estilos del encabezado y la navegación */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            height: 60px; /* Tamaño del contenedor para el logo */
+        }
+        .logo img {
+            height: 100%; /* Ajusta la imagen al tamaño del contenedor */
+            width: auto;
+            max-width: 250px; /* Evita que el logo sea demasiado grande en pantallas grandes */
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ccc;
+        }
+
+        /* Contenedor principal para el contenido */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Estilos para las secciones */
+        section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background-color: #000;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Estilos de la cuadrícula de servicios y productos */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .grid-item {
+            background-color: #000;
+            color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            font-weight: 400;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilos de la sección Quiénes somos */
+        #quienes-somos {
+            text-align: left;
+        }
+        #quienes-somos p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        /* Estilos de la sección Contacto */
+        #contacto {
+            text-align: left;
+        }
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+        .contact-info a {
+            color: #000;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos del mapa de Google Maps */
+        .map-container {
+            position: relative;
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Estilos del pie de página */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #000;
+            color: #fff;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Media queries para diseño adaptable */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding-top: 10px;
+            }
+            nav ul {
+                margin-top: 15px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Encabezado y menú de navegación -->
     <header>
-        <img src="images/logoh1.png" alt="Logo">
+        <nav>
+            <div class="logo">
+                <img src="images/logoh1.png" alt="Logo de miPCera.com">
+            </div>
+            <ul>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#quienes-somos">Quiénes somos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
-    <!-- Resto del contenido -->
+
+    <!-- Contenido principal de la página -->
+    <div class="container">
+
+        <!-- Sección de Servicios -->
+        <section id="servicios">
+            <h2>Servicios</h2>
+            <div class="grid-container">
+                <div class="grid-item">Reparamos tu ordenador</div>
+                <div class="grid-item">Reparamos tu móvil</div>
+                <div class="grid-item">Reparamos tu tablet</div>
+                <div class="grid-item">Reparamos tu consola</div>
+                <div class="grid-item">Reparamos tu equipo de audio</div>
+                <div class="grid-item">Reparamos tu televisor</div>
+                <div class="grid-item">Diseñamos tu página web</div>
+                <div class="grid-item">Ampliamos tu red WIFI</div>
+                <div class="grid-item">Servicio de impresión</div>
+            </div>
+        </section>
+
+        <!-- Sección de Productos -->
+        <section id="productos">
+            <h2>Productos</h2>
+            <div class="grid-container">
+                <div class="grid-item">Accesorios para tu móvil</div>
+                <div class="grid-item">Ordenadores de segunda mano</div>
+                <div class="grid-item">¿Te echamos un cable? Los tenemos todos</div>
+                <div class="grid-item">Auriculares para tus dispositivos</div>
+                <div class="grid-item">Altavoces bluetooth</div>
+                <div class="grid-item">Fundas para móviles</div>
+                <div class="grid-item">Consumibles para tu impresora</div>
+                <div class="grid-item">Periféricos para tu ordenador</div>
+                <div class="grid-item">Mandos a distancia TV compatibles</div>
+            </div>
+        </section>
+
+        <!-- Sección de Quiénes somos -->
+        <section id="quienes-somos">
+            <h2>Quiénes somos</h2>
+            <p>miPCera.com abre las puertas de su pequeña tienda de informática a finales de 1999 en la C/ Patriarca, con la lógica ilusión e incertidumbre de saber si el nuevo proyecto será un éxito o un fracaso.</p>
+            <p>Después de varios años ubicados en el centro del pueblo, nos mudamos en 2010 al Zaburdón motivados por el incremento de la actividad comercial y la facilidad para que nuestros clientes pudieran aparcar cerca de la tienda.</p>
+            <p>Pese a la famosa crisis económica, este cambio de emplazamiento, junto a la incorporación de Jose a nuestro equipo de trabajo supuso un aumento de nuestra actividad.</p>
+            <p>El mundo tecnológico cambia constantemente y si especializarnos en los ordenadores portátiles fue el primer paso, adentrarnos en la telefonía y los smartphones fue definitivo para nuestra supervivencia.</p>
+            <p>La reparación de estos teléfonos fue un reto y tras comprobar que externalizar este servicio no era la mejor solución, aumentamos nuestra plantilla con Nordin, quien aportó su experiencia y conocimientos.</p>
+            <p>Saber que nuestros clientes nos tienen bien valorados hace que sigamos con energía, ofreciéndoles las mejores soluciones.</p>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Dirección</h3>
+                    <p>C/ Pozas, 181. Local 1</p>
+                    <p>C.C. Zaburdón</p>
+                    <p>San Lorenzo de El Escorial, Madrid</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Teléfono</h3>
+                    <p>91 896 90 64</p>
+                </div>
+                <div class="contact-info">
+                    <h3>WhatsApp (en horario de tienda)</h3>
+                    <p><a href="https://wa.me/34693027172" target="_blank">693 02 71 72</a></p>
+                </div>
+                <div class="contact-info">
+                    <h3>Email</h3>
+                    <p>
+                        <a href="mailto:mipceraclientes@gmail.com">mipceraclientes@gmail.com</a>
+                        <br>
+                        <a href="mailto:mipceraimprimir@gmail.com">mipceraimprimir@gmail.com</a>
+                    </p>
+                </div>
+                <div class="contact-info">
+                    <h3>Horario</h3>
+                    <p>Lunes a viernes: 9:00h a 14:00h y 16:30h a 19:30h</p>
+                    <p>Sábado: 10:00h a 13:00h</p>
+                    <p>Domingo: Cerrado</p>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3032.559537243939!2d-4.148123923588965!3d40.59604104085424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd[...]" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 miPCera.com</p>
+    </footer>
+
 </body>
 </html>
